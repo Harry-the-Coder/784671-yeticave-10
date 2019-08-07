@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Denis Bukharev](https://up.htmlacademy.ru/php/10/user/784671).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Зольников](https://htmlacademy.ru/profile/id870391).
 
 ---
 
