@@ -27,8 +27,10 @@
                         <span class="lot__amount">Стартовая цена</span>
                         <span class="lot__cost"><?= edit_price(htmlspecialchars($product['price'])); ?></span>
                     </div>
-                    <div class="lot__timer timer">
-                        12:23
+                    <div class="lot__timer timer <?php if ($remaining_time['hours'] < 0) print("timer——finishing"); ?>">
+                        <?php $remaining_time = get_time($product['expiration_date']);
+                        print(str_pad($remaining_time['hours'], strlen($remaining_time['hours']) + 1, ':') . str_pad($remaining_time['minutes'], 2, '0', STR_PAD_LEFT));
+                        ?>
                     </div>
                 </div>
             </div>
