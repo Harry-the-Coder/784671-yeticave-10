@@ -20,12 +20,14 @@ function edit_price($price) {
 };
 
 function get_time($exp_date) {
-  $current_time = time();
-  $expiration_time = strtotime($exp_date);
-  $remaining_hours = floor(($expiration_time - $current_time) / 3600);
-  $remaining_minutes = floor(($expiration_time - $current_time) / 60 - $remaining_hours * 60);
-  $remaining_time = ['hours' => $remaining_hours, 'minutes' => $remaining_minutes];
-  return $remaining_time;
+  $current_date = date_create(date('Y-m-d H:i:s'));
+  $expiration_date = date_create($exp_date);
+
+  $interval = date_diff($expiration_date, $current_date);
+  $remaining_time['hours'] = $interval->d * 24 + $interval->h;
+  $remaining_time['minutes'] = str_pad($interval->i, 2, "0", STR_PAD_LEFT);
+
+  echo $remaining_time['hours'] . ':'. $remaining_time['minutes'];
 }
 
 $page_content = include_template('main.php', ['products' => $products, 'categories' => $categories]);
