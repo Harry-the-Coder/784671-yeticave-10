@@ -27,7 +27,13 @@ function get_time($exp_date) {
   $remaining_time['hours'] = $interval->d * 24 + $interval->h;
   $remaining_time['minutes'] = str_pad($interval->i, 2, "0", STR_PAD_LEFT);
 
-  echo $remaining_time['hours'] . ':'. $remaining_time['minutes'];
+  return $remaining_time['hours'] . ':'. $remaining_time['minutes'];
+}
+
+function isRemaining ($exp_date) {
+  $expiration_date = strtotime($exp_date);
+  $now = strtotime('now');
+  return ($expiration_date - $now) / 3600 <= 1;
 }
 
 $page_content = include_template('main.php', ['products' => $products, 'categories' => $categories]);

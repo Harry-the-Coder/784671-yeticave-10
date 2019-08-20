@@ -42,7 +42,7 @@ $products = [
         'category' => 'Разное',
         'price' => 5400,
         'url' => 'img/lot-6.jpg',
-        'expiration_date' => '2019-08-20 22:30:00'
+        'expiration_date' => '2019-08-20 21:30:00'
     ],
 ];
 ?>
