@@ -17,8 +17,8 @@ CREATE table users (
   name CHAR NOT NULL,
   password CHAR NOT NULL UNIQUE,
   contacts CHAR UNIQUE,
-  lot_id INT,
-  rate_id INT
+  lot_id INT NOT NULL,
+  rate_id INT NOT NULL
 );
 
 CREATE table rates (
@@ -29,16 +29,16 @@ CREATE table rates (
   start_price INT,
   finishing_date DATETIME,
   step INT,
-  user_id INT,
-  winner_id INT,
-  category_id INT
+  user_id INT NOT NULL,
+  winner_id INT NOT NULL,
+  category_id INT NOT NULL
 );
 
 CREATE table lots (
   id INT AUTO_INCREMENT PRIMARY KEY,
   register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   price INT NOT NULL,
-  user_id INT,
-  lot_id INT
+  user_id INT NOT NULL,
+  lot_id INT NOT NULL
 );
 
