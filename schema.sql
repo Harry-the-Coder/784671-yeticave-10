@@ -15,8 +15,8 @@ CREATE table users (
   register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   email VARCHAR(128) NOT NULL,
   name VARCHAR(128) NOT NULL,
-  password VARCHAR(128) NOT NULL UNIQUE,
-  contacts VARCHAR(128) UNIQUE,
+  password VARCHAR(128) NOT NULL,
+  contacts VARCHAR(128),
   lot_id INT,
   rate_id INT
 );
@@ -26,7 +26,7 @@ CREATE table lots (
   register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   name VARCHAR(128) NOT NULL,
   description VARCHAR(128),
-  image VARCHAR(128) UNIQUE,
+  image VARCHAR(128),
   start_price INT,
   finishing_date DATETIME,
   step INT,
