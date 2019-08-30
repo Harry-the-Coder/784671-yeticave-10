@@ -26,8 +26,8 @@ SELECT * FROM categories;
 
 SELECT name, start_price, image, category_id FROM lots WHERE finishing_date > NOW();
 
-SELECT l.*, c.name FROM lots l JOIN categories c ON l.category_id = c.id WHERE l.id;
+SELECT l.*, c.name FROM lots l LEFT JOIN categories c ON l.category_id = c.id WHERE l.id = '2';
 
-UPDATE lots l SET name = l.name WHERE id;
+UPDATE lots l SET name = l.name WHERE id = '3';
 
-SELECT * FROM lots l JOIN rates r ON r.lot_id = l.id WHERE r.id ORDER BY r.register_date;
+SELECT l.name, r.register_date, r.price FROM lots l LEFT JOIN rates r ON r.lot_id = l.id  WHERE l.id = '1' ORDER BY r.register_date DESC;
