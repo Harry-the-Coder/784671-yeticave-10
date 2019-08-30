@@ -13,7 +13,7 @@ VALUES (NOW(), 'ivanoff@ololo.ru', 'Иван Иванов', 'qwerty123', 'стр
 INSERT INTO lots (register_date, name, description, image, start_price, finishing_date, step, user_id, winner_id, category_id)
 VALUES (NOW(), '2014 Rossignol District Snowboard', '', 'img/lot-1.jpg', 10999, '2019-09-15 12:20:50', 0, 1, 1, 1),
 (NOW(), 'DC Ply Mens 2016/2017 Snowboard', '', 'img/lot-2.jpg', 159999, '2019-08-30 16:30:00', 0, 1, 1, 1),
-(NOW(), 'Крепления Union Contact Pro 2015 года размер L/XL', '', 'img/lot-3.jpg', 8000, '2019-12-10 14:30:00', 0, 1, 1, 2),
+(NOW(), 'Крепления Union Contact Pro 2015 года', '', 'img/lot-3.jpg', 8000, '2019-12-10 14:30:00', 0, 1, 1, 2),
 (NOW(), 'Ботинки для сноуборда DC Mutiny Charocal', '', 'img/lot-4.jpg', 10999, '2019-12-01 16:38:00', 0, 1, 1, 3),
 (NOW(), 'Куртка для сноуборда DC Mutiny Charocal', '', 'img/lot-5.jpg', 7500, '2019-10-02 10:25:00', 0, 1, 1, 4),
 (NOW(), 'Маска Oakley Canopy', '', 'img/lot-6.jpg', 5400, '2019-08-20 21:30:00', 0, 1, 1, 6);
@@ -26,8 +26,8 @@ SELECT * FROM categories;
 
 SELECT name, start_price, image, category_id FROM lots WHERE finishing_date > NOW();
 
-SELECT l.*, c.name FROM lots l LEFT JOIN categories c ON l.category_id = c.id WHERE l.id = '2';
+SELECT l.*, c.name FROM lots l LEFT JOIN categories c ON l.category_id = c.id WHERE l.id = 2;
 
-UPDATE lots l SET name = l.name WHERE id = '3';
+UPDATE lots SET name = 'Крепления Union Contact Pro 2015 года размер L/XL' WHERE id = 3;
 
-SELECT l.name, r.register_date, r.price FROM lots l LEFT JOIN rates r ON r.lot_id = l.id  WHERE l.id = '1' ORDER BY r.register_date DESC;
+SELECT l.name, r.register_date, r.price FROM lots l LEFT JOIN rates r ON r.lot_id = l.id  WHERE l.id = 1 ORDER BY r.register_date DESC;
