@@ -6,26 +6,27 @@ USE Yeti;
 
 CREATE table categories (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name CHAR NOT NULL,
-  symbol_code CHAR NOT NULL
+  name VARCHAR(128) NOT NULL,
+  symbol_code VARCHAR(128) NOT NULL
 );
 
 CREATE table users (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  email CHAR NOT NULL UNIQUE,
-  name CHAR NOT NULL,
-  password CHAR NOT NULL UNIQUE,
-  contacts CHAR UNIQUE,
+  email VARCHAR(128) NOT NULL,
+  name VARCHAR(128) NOT NULL,
+  password VARCHAR(128) NOT NULL,
+  contacts VARCHAR(128),
   lot_id INT,
   rate_id INT
 );
 
-CREATE table rates (
+CREATE table lots (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  description CHAR,
-  image CHAR UNIQUE,
+  name VARCHAR(128) NOT NULL,
+  description VARCHAR(128),
+  image VARCHAR(128),
   start_price INT,
   finishing_date DATETIME,
   step INT,
@@ -34,7 +35,7 @@ CREATE table rates (
   category_id INT
 );
 
-CREATE table lots (
+CREATE table rates (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   price INT NOT NULL,
