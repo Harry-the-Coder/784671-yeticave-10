@@ -36,16 +36,44 @@ function isRemaining ($exp_date) {
   return ($expiration_date - $now) / 3600 <= 1;
 }
 
-$page_content = include_template('main.php', ['products' => $products, 'categories' => $categories]);
+$con = mysqli_connect("localhost", "root", "", "yeti");
 
-$layout_content = include_template('layout.php', [
-    'page_content' => $page_content,
-    'categories' => $categories,
-    'user_name' => $user_name,
-    'is_auth' => $is_auth,
-    'title_main' => $title_main
-    ]);
+mysqli_set_charset($con, "utf8");
 
-print ($layout_content);
+function isResult ($query_func, $con) {
+   if ($query_func == false) {
+     $error = mysqli_error($con);
+     echo("Ошибка MySQL " . $error);
+   } else {
+       $array = mysqli_fetch_all($query_func, MYSQLI_ASSOC);
+   }
+   return $array;
+}
+
+$select_lots = "SELECT * FROM lots WHERE finishing_date > NOW()";
+
+$lots = isResult(mysqli_query($con, $select_lots), $con);
+
+$select_categories = "SELECT * FROM categories";
+
+$categories = isResult(mysqli_query($con, $select_categories), $con);
+
+if ($con == false) {
+    echo ("ошибка подключения: " . mysqli_connect_error());
+} else {
+
+    $page_content = include_template('main.php', ['lots' => $lots, 'categories' => $categories]);
+
+    $layout_content = include_template('layout.php', [
+        'page_content' => $page_content,
+        'categories' => $categories,
+        'user_name' => $user_name,
+        'is_auth' => $is_auth,
+        'title_main' => $title_main
+        ]);
+
+    print ($layout_content);
+
+}
 
 ?>
