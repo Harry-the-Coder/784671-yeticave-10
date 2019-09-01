@@ -1,6 +1,6 @@
 INSERT INTO categories (name, symbol_code)
 VALUES ('Доски и лыжи','boards'),
-('Крепления', 'Attachment'),
+('Крепления', 'attachment'),
 ('Ботинки', 'boots'),
 ('Одежда', 'clothing'),
 ('Инструменты', 'tools'),
@@ -22,12 +22,10 @@ INSERT INTO rates (register_date, price, user_id, lot_id)
 VALUES (NOW(), 10998, 1, 1),
 (NOW(), 5000, 2, 6);
 
-SELECT * FROM categories;
+-- SELECT * FROM categories;
 
-SELECT name, start_price, image, category_id FROM lots WHERE finishing_date > NOW();
+-- SELECT l.*, c.name FROM lots l LEFT JOIN categories c ON l.category_id = c.id WHERE l.id = 2;
 
-SELECT l.*, c.name FROM lots l LEFT JOIN categories c ON l.category_id = c.id WHERE l.id = 2;
+-- UPDATE lots SET name = 'Крепления Union Contact Pro 2015 года размер L/XL' WHERE id = 3;
 
-UPDATE lots SET name = 'Крепления Union Contact Pro 2015 года размер L/XL' WHERE id = 3;
-
-SELECT l.name, r.register_date, r.price FROM lots l LEFT JOIN rates r ON r.lot_id = l.id  WHERE l.id = 1 ORDER BY r.register_date DESC;
+-- SELECT l.name, r.register_date, r.price FROM lots l LEFT JOIN rates r ON r.lot_id = l.id  WHERE l.id = 1 ORDER BY r.register_date DESC;
