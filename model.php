@@ -86,6 +86,10 @@ function isResult ($query_func, $con) {
    return $array;
 }
 
+function getPostVal ($name) {
+    return $_POST[$name] ?? "";
+}
+
 $select_lots = "SELECT * FROM lots WHERE finishing_date > NOW()";
 
 $lots = isResult(mysqli_query($con, $select_lots), $con);
