@@ -22,7 +22,10 @@ $current_lot = $current_lot[0];
 
 $cat_id = $current_lot['category_id'];
 
-$select_cat = "SELECT name FROM categories WHERE id = $cat_id";
+$select_cat = "SELECT name FROM categories WHERE id = ?";
+$stmt = db_get_prepare_stmt($con, $select_cat, [$cat_id]);
+mysqli_stmt_execute($stmt);
+$id = mysqli_insert_id($con);
 
 $current_cat = isResult(mysqli_query($con, $select_cat), $con);
 
